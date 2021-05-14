@@ -69,7 +69,8 @@ class _CategoryListState extends State<CategoryList> {
                         ),
                         title: Text(document.data()['name']),
                         onTap: () {
-                          _provider.selectCategory(document.data()['name']);
+                          _provider.selectCategory(document.data()['name'],
+                              document.data()['image']);
                           Navigator.pop(context);
                         },
                       );
@@ -133,58 +134,62 @@ class _SubCategoryListState extends State<SubCategoryList> {
                 }
                 if (snapshot.connectionState == ConnectionState.done) {
                   Map<String, dynamic> data = snapshot.data.data();
-                  return Expanded(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            child: Row(
-                              children: [
-                                Text('Main Category'),
-                                FittedBox(
-                                  child: Text(
-                                    _provider.selectedCategory,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                  return data != null
+                      ? Expanded(
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  child: Row(
+                                    children: [
+                                      Text('Main Category'),
+                                      FittedBox(
+                                        child: Text(
+                                          _provider.selectedCategory,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Divider(
-                          thickness: 3,
-                        ),
-                        Container(
-                          child: Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: ListView.builder(
-                                itemBuilder: (BuildContext context, int index) {
-                                  return ListTile(
-                                    contentPadding: EdgeInsets.zero,
-                                    leading: CircleAvatar(
-                                      child: Text('${index + 1}'),
-                                    ),
-                                    title: Text(data['subCat'][index]['name']),
-                                    onTap: () {
-                                      _provider.selectSubCategory(
-                                          data['subCat'][index]['name']);
-                                      Navigator.pop(context);
-                                    },
-                                  );
-                                },
-                                itemCount: data['subCat'] == null
-                                    ? 0
-                                    : data['subCat'].length,
                               ),
-                            ),
+                              Divider(
+                                thickness: 3,
+                              ),
+                              Container(
+                                child: Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: ListView.builder(
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return ListTile(
+                                          contentPadding: EdgeInsets.zero,
+                                          leading: CircleAvatar(
+                                            child: Text('${index + 1}'),
+                                          ),
+                                          title: Text(
+                                              data['subCat'][index]['name']),
+                                          onTap: () {
+                                            _provider.selectSubCategory(
+                                                data['subCat'][index]['name']);
+                                            Navigator.pop(context);
+                                          },
+                                        );
+                                      },
+                                      itemCount: data['subCat'] == null
+                                          ? 0
+                                          : data['subCat'].length,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
                         )
-                      ],
-                    ),
-                  );
+                      : Text('No Category Selected');
                 }
                 return Center(
                   child: CircularProgressIndicator(),

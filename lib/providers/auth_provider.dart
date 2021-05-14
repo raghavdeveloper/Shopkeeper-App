@@ -164,9 +164,9 @@ class AuthProvider extends ChangeNotifier {
       'shopOpen': true, //will use later
       'rating': 0.00, //will use later
       'totalRating': 0, //will use later
-      'isTopPicked': true, //will use later
+      'isTopPicked': false, //keep initial value as false
       'imageUrl': url,
-      'accVerified': true,
+      'accVerified': false,
     });
     return null;
   }
