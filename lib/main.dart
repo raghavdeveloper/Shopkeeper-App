@@ -2,6 +2,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vendor_app/providers/auth_provider.dart';
+import 'package:flutter_vendor_app/providers/product_provider.dart';
 import 'package:flutter_vendor_app/screens/add_newproduct_screen.dart';
 import 'package:flutter_vendor_app/screens/home_screen.dart';
 import 'package:flutter_vendor_app/screens/login_screen.dart';
@@ -19,6 +20,7 @@ void main() async {
     MultiProvider(
       providers: [
         Provider(create: (_) => AuthProvider()),
+        Provider(create: (_) => ProductProvider()),
       ],
       child: MyApp(),
     ),
