@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vendor_app/screens/add_newproduct_screen.dart';
+import 'package:flutter_vendor_app/widgets/published_product.dart';
+import 'package:flutter_vendor_app/widgets/uppublished_products.dart';
 
 class ProductScreen extends StatelessWidget {
   @override
@@ -79,12 +81,8 @@ class ProductScreen extends StatelessWidget {
               child: Container(
                 child: TabBarView(
                   children: [
-                    Center(
-                      child: Text('Published Products'),
-                    ),
-                    Center(
-                      child: Text('Unpublished Products'),
-                    ),
+                    PublishedProducts(),
+                    UnPublishedProducts(),
                   ],
                 ),
               ),
