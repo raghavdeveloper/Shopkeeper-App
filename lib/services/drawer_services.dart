@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vendor_app/screens/banner_screen.dart';
 import 'package:flutter_vendor_app/screens/dashboard_screen.dart';
 import 'package:flutter_vendor_app/screens/product_screen.dart';
 
@@ -9,6 +10,9 @@ class DrawerServices {
     }
     if (title == 'Product') {
       return ProductScreen();
+    }
+    if (title == 'Banner') {
+      return BannerScreen();
     }
     return MainScreen();
   }

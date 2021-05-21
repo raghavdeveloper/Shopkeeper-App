@@ -86,6 +86,7 @@ class _MenuWidgetState extends State<MenuWidget> {
           ),
           sliderItem('Dashboard', Icons.dashboard_outlined),
           sliderItem('Product', Icons.shopping_bag_outlined),
+          sliderItem('Banner', CupertinoIcons.photo),
           sliderItem('Coupons', CupertinoIcons.gift),
           sliderItem('Orders', Icons.list_alt_outlined),
           sliderItem('Report', Icons.stacked_bar_chart),

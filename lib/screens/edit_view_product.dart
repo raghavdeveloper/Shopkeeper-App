@@ -91,7 +91,6 @@ class _EditViewProductState extends State<EditViewProduct> {
   @override
   Widget build(BuildContext context) {
     var _provider = Provider.of<ProductProvider>(context);
-    _provider.resetProvider();
 
     return Scaffold(
       appBar: AppBar(
@@ -189,6 +188,8 @@ class _EditViewProductState extends State<EditViewProduct> {
                       );
                       EasyLoading.dismiss();
                     }
+                    _provider
+                        .resetProvider(); //reset only after saving completed
                   }
                 },
                 child: Container(
